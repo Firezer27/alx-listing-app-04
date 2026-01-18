@@ -1,17 +1,20 @@
+// components/Pill.tsx
 import React from "react";
 
 interface PillProps {
   label: string;
   active?: boolean;
-  onClick?: () => void;
 }
 
-const Pill: React.FC<PillProps> = ({ label, active, onClick }) => {
+const Pill: React.FC<PillProps> = ({ label, active = false }) => {
   return (
     <button
-      onClick={onClick}
-      className={`px-4 py-2 border rounded-full text-sm cursor-pointer transition-all duration-200
-${active ? "bg-blue-600 text-white" : "bg-white hover:bg-blue-100"}`}
+      className={`px-4 py-2 rounded-full text-sm whitespace-nowrap border
+        ${
+          active
+            ? "bg-black text-white border-black"
+            : "bg-white text-gray-700 border-gray-300 hover:border-black"
+        }`}
     >
       {label}
     </button>

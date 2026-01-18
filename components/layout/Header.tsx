@@ -1,42 +1,51 @@
+// components/layout/Header.tsx
 import React from "react";
-import Link from "next/link";
+
+const categories = [
+  "Rooms",
+  "Mansion",
+  "Countryside",
+  "Beachfront",
+  "Luxury",
+  "Cabins",
+];
 
 const Header: React.FC = () => {
   return (
-    <header className="w-full bg-white shadow-sm sticky top-0 z-50">
-      <div className="max-w-7xl mx-auto px-4 py-4 flex justify-between items-center">
-        <div className="text-2xl font-bold text-blue-600">
-          <Link href="/">MyStay</Link>
-        </div>
+    <header className="sticky top-0 z-50 bg-white border-b">
+      {/* Top Row */}
+      <div className="flex items-center justify-between px-6 py-4 max-w-7xl mx-auto">
+        {/* Logo */}
+        <div className="text-xl font-bold">alx</div>
 
-        <div className="hidden md:flex space-x-6">
-          <Link href="#" className="hover:text-blue-600">
-            Rooms
-          </Link>
-          <Link href="#" className="hover:text-blue-600">
-            Mansion
-          </Link>
-          <Link href="#" className="hover:text-blue-600">
-            Countryside
-          </Link>
-          <Link href="#" className="hover:text-blue-600">
-            City
-          </Link>
-        </div>
-
-        <div className="flex items-center space-x-4">
+        {/* Search */}
+        <div className="hidden md:flex items-center border rounded-full px-4 py-2 shadow-sm">
           <input
             type="text"
-            placeholder="Search..."
-            className="border px-3 py-1 rounded-lg hidden md:block"
+            placeholder="Search destinations"
+            className="outline-none text-sm w-64"
           />
-          <button className="px-4 py-1 border rounded-lg hover:bg-blue-600 hover:text-white">
-            Sign In
-          </button>
-          <button className="px-4 py-1 bg-blue-600 text-white rounded-lg hover:bg-blue-700">
-            Sign Up
+        </div>
+
+        {/* Auth */}
+        <div className="flex items-center gap-4 text-sm">
+          <button className="hover:underline">Sign in</button>
+          <button className="bg-black text-white px-4 py-2 rounded-full">
+            Sign up
           </button>
         </div>
+      </div>
+
+      {/* Category Nav */}
+      <div className="flex gap-6 px-6 py-3 overflow-x-auto text-sm max-w-7xl mx-auto">
+        {categories.map((cat) => (
+          <span
+            key={cat}
+            className="cursor-pointer whitespace-nowrap text-gray-600 hover:text-black"
+          >
+            {cat}
+          </span>
+        ))}
       </div>
     </header>
   );
